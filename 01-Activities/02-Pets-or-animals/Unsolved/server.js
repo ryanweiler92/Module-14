@@ -60,9 +60,7 @@ app.get('/all-pets', (req, res) => {
     }
   }
 
-const arrayToObject = (arr, key) => Object.assign({}, ...arr.map(item => ({[item[key]]: item})))
-
-const animalObject = arrayToObject(pets, 'animalType')
+const animalObject = {pets}
 
 console.log(animalObject)
 
@@ -74,7 +72,19 @@ app.get('/all-non-pets', (req, res) => {
   // Hint: Handlebars requires an object to be sent to the `index.handlebars` file, not an array!
   //
   // YOUR CODE HERE
-  //
+  let pets = [];
+
+  for(let i = 0; i < animals.length; i++){
+    if (animals[i].pet === false){
+      pets.push(animals[i])
+    }
+  }
+
+const animalObject = {pets}
+
+console.log(animalObject)
+
+  res.render('index', animalObject)
 });
 
 // Starts the server to begin listening
