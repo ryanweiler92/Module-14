@@ -9,9 +9,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set Handlebars as the default template engine
-//
 // YOUR CODE HERE
-//
+const hbs = exphbs.create({})
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // Data
 // =============================================================
@@ -51,7 +52,21 @@ app.get('/all-pets', (req, res) => {
   // Hint: Handlebars requires an object to be sent to the `index.handlebars` file, not an array!
   //
   // YOUR CODE HERE
-  //
+  let pets = [];
+
+  for(let i = 0; i < animals.length; i++){
+    if (animals[i].pet === true){
+      pets.push(animals[i])
+    }
+  }
+
+const arrayToObject = (arr, key) => Object.assign({}, ...arr.map(item => ({[item[key]]: item})))
+
+const animalObject = arrayToObject(pets, 'animalType')
+
+console.log(animalObject)
+
+  res.render('index', animalObject)
 });
 
 app.get('/all-non-pets', (req, res) => {
