@@ -30,28 +30,17 @@ const icecreams = [
 
 // GET route for getting all of the ice cream flavors
 app.get('/', (req, res) => {
-  let results = icecreams
-  .then(icecreamData => {
-    const icecream = icecreamData.map(post => post.get({ plain: true}));
-
-    res.render('all', {
-      icecream
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err)
-    })
-  })
-
-
-  
+  res.render('all')
 });
 
 // Create a route for getting a specific ice cream flavor
 //
 // YOUR CODE HERE
-//
+app.get('/:num', (req, res) => {
 
+
+res.render('one')
+})
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, () => {
