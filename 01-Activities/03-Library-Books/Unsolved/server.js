@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 3001;
 // Set Handlebars as the default template engine
 //
 // YOUR CODE HERE
-//
+const hbs = exphbs.create({})
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // Data
 // =============================================================
@@ -53,9 +55,10 @@ const books = [
 
 app.get('/', (req, res) => {
   // Send all of the books to 'index.handlebars' as an object
-  //
   // YOUR CODE HERE
-  //
+  const bookList = {books}
+  console.log(bookList)
+  res.render('index', bookList)
 });
 
 // Starts the server to begin listening
