@@ -71,18 +71,23 @@ app.get('/', (req, res) => {
     console.log('not first time')
     req.session.countVisit++
     req.session.firstTime = false;
+    countVisit = req.session.countVisit
+    firstTime = req.session.firstTime
   } else {
     // If the 'countVisit' session variable doesn't exist, set it to 1 and set the 'firstTime' session variable to 'true'
     // YOUR CODE HERE
     console.log('first time')
     req.session.countVisit = 1;
     req.session.firstTime = true;
+    countVisit = req.session.countVisit
+    firstTime = req.session.firstTime
   }
   const data = {
     // Include the 'books' array, 'countVisit' and 'firstTime' session variables to be sent over to `index.handlebars`
     // YOUR CODE HERE
     library: books,
-    //req.session.countVisit
+    countVisit,
+    firstTime
     
   };
   res.render('index', data);
