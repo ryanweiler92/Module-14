@@ -6,9 +6,7 @@
   {{#each library}}
   {{#if read}}
   <li>
-    <p>Title: {{title}}</p>
-    <p>Author: {{author}}</p>
-    <p>Read: {{read}}</p>
+    {{> books/book-block}}
   </li>
   {{/if}}
   {{/each}}
@@ -20,9 +18,7 @@
   {{#each library}}
   {{#unless read}}
   <li>
-    <p>Title: {{title}}</p>
-    <p>Author: {{author}}</p>
-    <p>Read: {{read}}</p>
+    {{> books/book-block}}
   </li>
   {{/unless}}
   {{/each}}

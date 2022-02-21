@@ -9,16 +9,19 @@
   <li>
     Title: {{title}} Read: {{read}}  Author: {{author}}
   </li>
+{{/if}}
+{{/each}}
 </ul>
 
 <h2>Books you haven't read yet</h2>
 <!-- Loop through the books and if 'read' is false, list them below -->
 <ul>
-{{else}}
+{{#each books}}
+{{#unless read}}
   <li>
-  
+  Title: {{title}} Read: {{read}}  Author: {{author}}
   </li>
-{{/if}}
+{{/unless}}
 {{/each}}
 
 </ul>

@@ -54,6 +54,7 @@ app.get('/', (req, res) => {
   const data = {
     library: books
   };
+  console.log(data)
   res.render('index', data);
 });
 

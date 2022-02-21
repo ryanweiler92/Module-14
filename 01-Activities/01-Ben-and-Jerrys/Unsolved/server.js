@@ -38,8 +38,9 @@ app.get('/', (req, res) => {
 // YOUR CODE HERE
 app.get('/:num', (req, res) => {
 
+  let flavor = icecreams[req.params.num -1]
 
-res.render('one')
+res.render('icecream', {flavor})
 })
 // Starts the server to begin listening
 // =============================================================
